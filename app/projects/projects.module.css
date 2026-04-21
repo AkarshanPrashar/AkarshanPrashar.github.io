@@ -1,0 +1,516 @@
+.page { min-height: 100vh; }
+
+/* ─── HEADER ─── */
+.header {
+  padding: 5rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  max-width: 600px;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ─── FILTERS ─── */
+.filtersSection {
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+}
+
+.filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--mono-font);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  border-radius: var(--radius);
+}
+
+.filterBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filterBtn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+/* ─── GRID ─── */
+.gridSection { background: var(--bg); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+/* ─── CARD ─── */
+.card {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg-2);
+  outline: none;
+}
+
+.card:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* Abstract geometric background */
+.cardBg {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-3);
+  transition: transform 0.5s ease;
+}
+
+.card:hover .cardBg {
+  transform: scale(1.04);
+}
+
+.cardGeom {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cardGeom::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 70%;
+  height: 130%;
+  border: 1px solid var(--c, var(--accent));
+  opacity: 0.15;
+  transform: rotate(18deg);
+  transition: opacity var(--transition), transform 0.5s ease;
+}
+
+.cardGeom::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 55%;
+  height: 90%;
+  background: var(--c, var(--accent));
+  opacity: 0.06;
+  transform: rotate(-12deg);
+  transition: opacity var(--transition);
+}
+
+.card:hover .cardGeom::before {
+  opacity: 0.3;
+  transform: rotate(22deg);
+}
+
+.card:hover .cardGeom::after {
+  opacity: 0.12;
+}
+
+/* Always-visible footer */
+.cardFooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, var(--bg) 60%, transparent);
+  z-index: 2;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.card:hover .cardFooter {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardTypology {
+  font-family: var(--mono-font);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.cardYear {
+  font-family: var(--mono-font);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+}
+
+.cardTitle {
+  font-size: 1.35rem;
+  font-weight: 300;
+  color: var(--text);
+}
+
+/* ── HOVER OVERLAY ── */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.card:hover .cardOverlay {
+  pointer-events: auto;
+}
+
+.overlayContent {
+  padding: 1.8rem;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(4px);
+  border-top: 2px solid var(--card-accent, var(--accent));
+  transform: translateY(100%);
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card:hover .overlayContent {
+  transform: translateY(0);
+}
+
+.overlayHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.overlayTitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.overlayAccent {
+  height: 2px;
+  width: 40px;
+}
+
+.overlayMeta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.metaLabel {
+  font-family: var(--mono-font);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.metaValue {
+  font-family: var(--mono-font);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.overlayConcept {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.overlayTags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.overlayView {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono-font);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--accent));
+}
+
+.overlayArrow {
+  font-size: 1rem;
+  transition: transform var(--transition);
+}
+
+.card:hover .overlayArrow {
+  transform: translateX(4px);
+}
+
+/* ─── MODAL ─── */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: backdropIn 0.3s ease;
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal {
+  position: relative;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  max-width: 760px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  animation: modalIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modalClose {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 10;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all var(--transition);
+}
+
+.modalClose:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.modalTop {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: var(--bg-3);
+}
+
+.modalGeom {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.modalGeom::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -5%;
+  width: 60%;
+  height: 160%;
+  border: 1px solid var(--c, var(--accent));
+  opacity: 0.2;
+  transform: rotate(14deg);
+}
+
+.modalGeom::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 50%;
+  height: 100%;
+  background: var(--c, var(--accent));
+  opacity: 0.07;
+  transform: rotate(-8deg);
+}
+
+.modalTopContent {
+  position: absolute;
+  bottom: 2rem;
+  left: 2.5rem;
+  right: 2.5rem;
+}
+
+.modalTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 300;
+  color: var(--text);
+  margin: 0.5rem 0 0.25rem;
+}
+
+.modalLocation {
+  font-family: var(--mono-font);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.modalBody {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 3rem;
+}
+
+.modalSectionHead {
+  font-family: var(--mono-font);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.modalSectionHead:first-child { margin-top: 0; }
+
+.modalConcept {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.materialsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.materialsList li {
+  font-family: var(--mono-font);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.materialsList li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--c, var(--accent));
+}
+
+.modalStats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  border-left: 1px solid var(--border);
+  padding-left: 2rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.statItem:last-child { border-bottom: none; }
+
+.statLabel {
+  font-family: var(--mono-font);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.statVal {
+  font-family: var(--mono-font);
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.modalTags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .modalGrid { grid-template-columns: 1fr; }
+  .modalStats { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+  .overlayMeta { grid-template-columns: 1fr 1fr; }
+}

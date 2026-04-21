@@ -1,0 +1,66 @@
+.page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  max-width: 500px;
+}
+
+.svg {
+  width: 200px;
+  height: 200px;
+  color: var(--accent);
+  animation: structureShake 4s ease infinite;
+}
+
+@keyframes structureShake {
+  0%, 90%, 100% { transform: rotate(0); }
+  92%  { transform: rotate(-1.5deg); }
+  94%  { transform: rotate(1.5deg); }
+  96%  { transform: rotate(-1deg); }
+  98%  { transform: rotate(0.5deg); }
+}
+
+.code {
+  font-family: var(--heading-font);
+  font-size: 6rem;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  opacity: 0.25;
+  margin-top: -1rem;
+}
+
+.heading {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 300;
+  color: var(--text);
+}
+
+.message {
+  font-family: var(--mono-font);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.corner {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  width: 36px;
+  height: 36px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}

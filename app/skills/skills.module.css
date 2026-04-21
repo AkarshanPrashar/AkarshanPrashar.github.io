@@ -1,0 +1,130 @@
+.page { min-height: 100vh; }
+
+.header {
+  padding: 5rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.title { font-size: clamp(3rem, 6vw, 5rem); font-weight: 300; margin-bottom: 1rem; }
+.subtitle { max-width: 560px; font-size: 1rem; color: var(--text-muted); line-height: 1.8; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 3rem 5rem;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.catHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.catNum {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--accent);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.catTitle {
+  font-family: var(--heading-font);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.skillList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.skillItem { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.skillTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.skillName {
+  font-family: var(--body-font);
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.skillRight {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.skillTag {
+  font-family: var(--mono-font);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border);
+}
+
+.skillPct {
+  font-family: var(--mono-font);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  min-width: 3ch;
+  text-align: right;
+}
+
+/* Blueprint-style progress bar */
+.barTrack {
+  position: relative;
+  height: 6px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+}
+
+.barTick {
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 12px;
+  background: var(--border);
+  transform: translateX(-50%);
+}
+
+.barFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.barFill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 14px;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}

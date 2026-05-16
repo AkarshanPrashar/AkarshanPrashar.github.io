@@ -1,12 +1,14 @@
 {
   "name": "arch-portfolio",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://Akarshanprashar.github.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out -b gh-pages"
   },
   "dependencies": {
     "next": "16.2.4",
@@ -15,6 +17,7 @@
   },
   "devDependencies": {
     "eslint": "^9",
-    "eslint-config-next": "16.2.4"
+    "eslint-config-next": "16.2.4",
+    "gh-pages": "^6.3.0"
   }
 }

@@ -971,51 +971,6 @@
   letter-spacing: 0.1em;
 }
 
-/* ─── Responsive for sub-sections ─── */
-@media (max-width: 640px) {
-  .drawingsGrid { grid-template-columns: 1fr; }
-
-  .walkthroughRow {
-    grid-template-columns: 2rem 3px 1fr;
-    gap: 1rem;
-    padding: 1.5rem 1rem;
-  }
-
-  .wtTop { flex-direction: column; }
-
-  /* On mobile, move overlay above video as an intro and disable hover hide */
-  .wtDescOverlay {
-    position: static;
-    background: transparent;
-    backdrop-filter: none;
-    padding: 0;
-    margin-bottom: 1rem;
-    pointer-events: auto;
-    opacity: 1 !important;
-    visibility: visible !important;
-    text-align: left;
-    align-items: flex-start;
-  }
-
-  .wtDescOverlay p {
-    font-size: 0.875rem;
-    margin-bottom: 0;
-  }
-
-  .playHint {
-    display: none;
-  }
-
-  /* Hide inline embed on mobile in favor of modal */
-  .wtEmbed {
-    display: none;
-  }
-  
-  .mobilePlayBtn {
-    display: block;
-  }
-}
-
 /* ─── MOBILE VIDEO MODAL & BTN ─── */
 .mobilePlayBtn {
   display: none;
@@ -1055,6 +1010,50 @@
   height: 100%;
   border: none;
   display: block;
+}
+
+/* ─── Responsive for sub-sections ─── */
+@media (max-width: 640px) {
+  .drawingsGrid { grid-template-columns: 1fr; }
+
+  .walkthroughRow {
+    grid-template-columns: 2rem 3px 1fr;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .wtTop { flex-direction: column; }
+
+  .wtDescOverlay {
+    position: static;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    margin-bottom: 1rem;
+    pointer-events: auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .wtDescOverlay p {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+  }
+
+  .playHint {
+    display: none;
+  }
+
+  /* Hide inline embed on mobile in favor of modal */
+  .wtEmbed {
+    display: none;
+  }
+  
+  .mobilePlayBtn {
+    display: block;
+  }
 }
 
 /* ─── VIDEO EMBED ─── */

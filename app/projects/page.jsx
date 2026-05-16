@@ -215,6 +215,7 @@ const WALKTHROUGHS = [
 function WalkthroughRow({ wt, index }) {
   const rowRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [mobileVideoOpen, setMobileVideoOpen] = useState(false);
 
   useEffect(() => {
     if (!wt.embedSrc || !rowRef.current) return;
@@ -239,20 +240,55 @@ function WalkthroughRow({ wt, index }) {
           </div>
         </div>
         <p className={styles.wtDesc}>{wt.description}</p>
+        
         {wt.embedSrc ? (
-          <div className={`${styles.wtEmbed} ${wt.embedRounded ? styles.wtEmbedRounded : ''}`}>
-            {visible ? (
-              <iframe
-                src={wt.embedSrc}
-                allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                allowFullScreen
-                frameBorder="0"
-                title={`${wt.title} — Video`}
-              />
-            ) : (
-              <div />
+          <>
+            {/* Desktop inline embed */}
+            <div className={`${styles.wtEmbed} ${wt.embedRounded ? styles.wtEmbedRounded : ''}`}>
+              {visible ? (
+                <iframe
+                  src={wt.embedSrc}
+                  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                  frameBorder="0"
+                  title={`${wt.title} — Video`}
+                />
+              ) : (
+                <div />
+              )}
+            </div>
+
+            {/* Mobile play button */}
+            <button 
+              className={styles.mobilePlayBtn} 
+              style={{ '--c': wt.color }}
+              onClick={() => setMobileVideoOpen(true)}
+            >
+              Watch Walkthrough
+            </button>
+
+            {/* Mobile video modal */}
+            {mobileVideoOpen && (
+              <div className={styles.modalBackdrop} onClick={() => setMobileVideoOpen(false)}>
+                <div className={styles.videoModal} onClick={e => e.stopPropagation()}>
+                  <button 
+                    className={styles.modalClose} 
+                    onClick={() => setMobileVideoOpen(false)}
+                    aria-label="Close video"
+                  >
+                    ✕
+                  </button>
+                  <iframe
+                    src={wt.embedSrc}
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    frameBorder="0"
+                    title={`${wt.title} — Video`}
+                  />
+                </div>
+              </div>
             )}
-          </div>
+          </>
         ) : null}
 
         <span className={styles.wtProject} style={{ color: wt.color }}>↳ {wt.project}</span>

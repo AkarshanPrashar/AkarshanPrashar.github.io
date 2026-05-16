@@ -992,17 +992,40 @@
   opacity: 0.9;
 }
 
+.videoBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  animation: backdropIn 0.3s ease;
+}
+
 .videoModal {
   position: relative;
-  width: 95%;
-  max-width: 800px;
-  background: var(--bg-2);
-  border: 1px solid var(--border);
+  width: 100vw;
+  max-width: 1000px;
+  background: #000;
+  border: none;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
   animation: modalIn 0.3s ease;
   aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 640px) and (orientation: portrait) {
+  .videoModal {
+    width: 100vh;
+    height: 100vw;
+    transform: rotate(90deg);
+    transform-origin: center;
+    aspect-ratio: auto;
+  }
 }
 
 .videoModal iframe {

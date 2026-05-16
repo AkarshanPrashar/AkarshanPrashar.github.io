@@ -269,7 +269,7 @@ function WalkthroughRow({ wt, index }) {
 
             {/* Mobile video modal */}
             {mobileVideoOpen && (
-              <div className={styles.modalBackdrop} onClick={() => setMobileVideoOpen(false)}>
+              <div className={styles.videoBackdrop} onClick={() => setMobileVideoOpen(false)}>
                 <div className={styles.videoModal} onClick={e => e.stopPropagation()}>
                   <button 
                     className={styles.modalClose} 

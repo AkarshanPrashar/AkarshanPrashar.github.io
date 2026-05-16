@@ -887,6 +887,7 @@
 /* Inline video embed inside a walkthrough row */
 .wtEmbed {
   width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
   border: 1px solid var(--border);
   overflow: hidden;
   background: var(--bg-3);
@@ -904,10 +905,11 @@
 }
 
 .wtEmbed iframe {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 640 / 360;
+  height: 100%;
   border: none;
 }
 

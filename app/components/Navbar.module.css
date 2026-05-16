@@ -34,16 +34,19 @@
 
 .navLogo {
   font-family: var(--heading-font);
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 400;
   color: var(--text);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-decoration: none;
   transition: color var(--transition);
+  white-space: nowrap;
 }
 
 .navLogo span {
   color: var(--accent);
+  font-weight: 300;
+  letter-spacing: 0.08em;
 }
 
 .navLinks {

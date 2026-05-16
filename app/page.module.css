@@ -13,6 +13,15 @@
 
 .heroInner {
   padding: 6rem 0;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.heroText {
+  flex: 1;
+  min-width: 0;
+  position: relative;
 }
 
 .heroLabel {
@@ -77,14 +86,94 @@
 }
 
 .coords {
-  position: absolute;
-  bottom: 3rem;
-  right: 0;
+  margin-top: 2.5rem;
   font-family: var(--mono-font);
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   color: var(--text-dim);
   animation: fadeUp 0.8s ease 0.8s both;
+}
+
+/* ─── HERO IMAGE PLACEHOLDER ─── */
+.heroImageWrap {
+  flex: 0 0 clamp(260px, 35%, 420px);
+  animation: fadeUp 0.9s ease 0.5s both;
+}
+
+.heroImagePlaceholder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  overflow: hidden;
+}
+
+/* Blueprint corner marks */
+.heroImageCornerTl,
+.heroImageCornerBr {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--accent);
+  border-style: solid;
+  opacity: 0.6;
+  z-index: 2;
+}
+.heroImageCornerTl { top: 12px;    left: 12px;    border-width: 1px 0 0 1px; }
+.heroImageCornerBr { bottom: 12px; right: 12px;   border-width: 0 1px 1px 0; }
+
+/* Actual photo */
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+}
+
+.heroImageInner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem;
+}
+
+.heroImageIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-dim);
+  opacity: 0.5;
+}
+
+.heroImageLabel {
+  font-family: var(--mono-font);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.heroImageSub {
+  font-family: var(--mono-font);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  opacity: 0.6;
+}
+
+/* Hide placeholder on small screens */
+@media (max-width: 768px) {
+  .heroInner { flex-direction: column; gap: 2.5rem; }
+  .heroImageWrap { flex: none; width: 100%; max-width: 320px; align-self: center; }
 }
 
 .divider { margin: 0 0.5rem; }

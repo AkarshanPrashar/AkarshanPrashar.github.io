@@ -2,6 +2,7 @@ import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Navbar from "./components/Navbar";
 import ClientLoader from "./components/ClientLoader";
+import PageTransition from "./components/PageTransition";
 
 export const metadata = {
   title: "A. Architect — Portfolio",
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning>
         <ThemeProvider>
           <ClientLoader />
+          <PageTransition />
           <Navbar />
           <main style={{ paddingTop: '64px' }}>
             {children}

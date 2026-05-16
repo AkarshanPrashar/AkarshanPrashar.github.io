@@ -120,6 +120,7 @@ export default function SettingsPage() {
               Reset to Blueprint (default)
             </button>
           </div>
+
         </div>
       </section>
     </div>

@@ -21,7 +21,7 @@ export default function Navbar() {
       <nav className={styles.navbar}>
         <div className={`container ${styles.container}`}>
           <Link href="/" className={styles.navLogo}>
-            A<span>.</span>
+            <span>आकर्षण</span> Prashar
           </Link>
 
           <ul className={styles.navLinks}>

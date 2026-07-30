@@ -179,12 +179,12 @@ export default function Home() {
         <section className={styles.left}>
           <div className={styles.number}>01</div>
 
-          <h1>
-            Portfolio
-            <br />
-            Under
-            <br />
-            Construction
+          <h1 className={styles.title}>
+          Portfolio
+          <br />
+          Under
+          <br />
+          Construction
           </h1>
 
           <p className={styles.subtitle}>

@@ -74,6 +74,11 @@
 // For Maintainence Page
 import "./globals.css";
 
+import { ThemeProvider } from "./components/ThemeProvider";
+import Navbar from "./components/Navbar";
+import ClientLoader from "./components/ClientLoader";
+import PageTransition from "./components/PageTransition";
+
 export const metadata = {
   title: "Portfolio Under Construction",
   description: "Portfolio is currently being redesigned.",
@@ -87,6 +92,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Cormorant+Garamond:wght@500&display=swap"
           rel="stylesheet"
@@ -97,19 +103,15 @@ export default function RootLayout({ children }) {
         {MAINTENANCE_MODE ? (
           children
         ) : (
-          <>
-            {/* Original Portfolio */}
+          <ThemeProvider>
+            <ClientLoader />
+            <PageTransition />
+            <Navbar />
 
-            <ThemeProvider>
-              <ClientLoader />
-              <PageTransition />
-              <Navbar />
-
-              <main style={{ paddingTop: "64px" }}>
-                {children}
-              </main>
-            </ThemeProvider>
-          </>
+            <main style={{ paddingTop: "64px" }}>
+              {children}
+            </main>
+          </ThemeProvider>
         )}
       </body>
     </html>

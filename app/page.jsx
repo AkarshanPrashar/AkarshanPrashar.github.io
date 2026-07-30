@@ -175,19 +175,9 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <main className={styles.page}>
-
-      <div className={styles.grid}></div>
-
-      <div className={styles.blur1}></div>
-      <div className={styles.blur2}></div>
-
-      <section className={styles.hero}>
-
-        <div className={styles.left}>
-
-          <span className={styles.label}>
-            ARCHITECTING • EXPERIENCES • 2026
-          </span>
+      <div className={styles.container}>
+        <section className={styles.left}>
+          <div className={styles.number}>01</div>
 
           <h1>
             Portfolio
@@ -197,63 +187,43 @@ export default function Home() {
             Construction
           </h1>
 
-          <p>
-            Great work deserves thoughtful presentation.
-
-            <br /><br />
-
-            I'm redesigning every detail—from interaction
-            to storytelling—to create a cleaner, faster,
-            and more immersive portfolio.
-
-            <br /><br />
-
-            See you soon.
+          <p className={styles.subtitle}>
+            This space is being carefully redesigned.
+            <br />
+            <br />
+            Like an architectural studio between sketches and structure,
+            every detail is being refined with intention.
+            <br />
+            <br />
+            The portfolio will return soon with new projects,
+            cleaner experiences, and thoughtful craftsmanship.
           </p>
 
           <div className={styles.signature}>
             <div className={styles.line}></div>
-
             <span>Akarshan Prashar</span>
           </div>
+        </section>
 
-        </div>
-
-        <div className={styles.right}>
-
-          <div className={styles.architecture}>
-
-            <div className={styles.square}></div>
-
-            <div className={styles.squareSmall}></div>
-
+        <section className={styles.right}>
+          <div className={styles.frame}>
             <div className={styles.circle}></div>
-
             <div className={styles.cross}></div>
-
           </div>
+        </section>
+      </div>
 
-        </div>
-
-      </section>
-
-      <footer>
-
+      <footer className={styles.footer}>
         <div>
           <span className={styles.dot}></span>
-
-          Carefully rebuilding the experience.
+          Work in Progress
         </div>
 
         <div>© 2026</div>
-
       </footer>
-
     </main>
   );
 }
-
-
 
 
 

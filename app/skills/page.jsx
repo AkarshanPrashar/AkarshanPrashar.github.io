@@ -11,7 +11,6 @@ const SKILLS = {
       { name: 'Revit',            level: 78, tag: 'Advanced'  },
       { name: 'SketchUp',         level: 82, tag: 'Expert'    },
       { name: 'Lumion',           level: 75, tag: 'Advanced'  },
-      { name: 'Adobe Photoshop',  level: 60, tag: 'Proficient'},
     ],
   },
   'Construction & Technical': {
